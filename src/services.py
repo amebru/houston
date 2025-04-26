@@ -7,14 +7,16 @@ from watchfiles import run_process
 
 from src.client import client
 from src.functions.llm import llm
-from src.functions.weather import weather
+from src.functions.weather import get_weather_for_location
+from src.functions.calendar import get_calendar_events
+from src.functions.calendar_weather import calendar_weather
 from src.workflows.multistep import MultistepWorkflow
 
 
 async def main() -> None:
     await client.start_service(
         workflows=[MultistepWorkflow],
-        functions=[llm, weather],
+        functions=[llm, get_weather_for_location, get_calendar_events, calendar_weather],
     )
 
 
