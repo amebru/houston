@@ -10,13 +10,14 @@ from src.functions.llm import llm
 from src.functions.weather import get_weather_for_location
 from src.functions.calendar import get_calendar_events
 from src.functions.calendar_weather import calendar_weather
+from src.functions.schedule_message import schedule_message
 from src.workflows.multistep import MultistepWorkflow
 
 
 async def main() -> None:
     await client.start_service(
         workflows=[MultistepWorkflow],
-        functions=[llm, get_weather_for_location, get_calendar_events, calendar_weather],
+        functions=[llm, get_weather_for_location, get_calendar_events, calendar_weather, schedule_message],
     )
 
 
